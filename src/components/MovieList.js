@@ -6,9 +6,10 @@ import MovieListEntry from './MovieListEntry'
 class MovieList extends React.Component {
   constructor(props) {
     super(props);
-    this.movies = props.movies;
-    this.movieList = this.movies.map((movie) => 
-      <MovieListEntry movie={movie}/>);
+    // this.movies = props.movies;
+    this.movieList = this.props.movies.map((movie) => {
+      return <MovieListEntry movie={movie}/>;
+    });
   }
   render() {
     return (
