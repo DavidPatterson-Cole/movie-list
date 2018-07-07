@@ -1,17 +1,15 @@
 import React from 'react';
-import '../styles/Search.css';
+import '../styles/AddMovie.css';
 
 
-class Search extends React.Component {
+class AddMovie extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {value: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    // this.setState({value: event.target.value});
     this.props.onChange(event.target.value);
   }
 
@@ -24,12 +22,12 @@ class Search extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          <input type="text" placeholder="Search..." value={this.props.searchVal} onChange={this.handleChange} />
+          <input type="text" placeholder="Search..." value={this.props.movieVal} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Go" />
+        <input type="submit" value="Add" />
       </form>
     );
   }
 }
 
-export default Search;
+export default AddMovie;
