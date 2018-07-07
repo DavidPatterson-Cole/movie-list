@@ -4,20 +4,19 @@ import MovieListEntry from './MovieListEntry'
 
 
 class MovieList extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.movies = props.movies;
-    this.movieList = this.props.movies.map((movie) => {
-      return <MovieListEntry movie={movie}/>;
-    });
-  }
   render() {
+    let items = this.props.movies.map((movie, index) => {
+          return <MovieListEntry movie={this.props.movies[index]}/>;
+        });
+    let noItems = (<div>
+                    <h1>No movie match was found.</h1>
+                   </div>);
     return (
       <div id="movieContainer">
-        {this.movieList}
+        {items.length === 0 ? noItems : items}
       </div>
     );
   }
-}
+};
 
 export default MovieList;

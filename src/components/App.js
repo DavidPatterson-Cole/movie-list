@@ -10,30 +10,32 @@ class App extends React.Component {
     super(props);
     // this.movies = data;
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSubmitButton = this.handleSubmitButton.bind(this);
+    this.originalList = data;
     this.state = {value: '', movies: data};
   }
 
   handleSearch(searchVal) {
     this.setState({value: searchVal});
-    var flag = false;
-    var currentMovie = this.state.movies
-    for (let movie of this.state.movies) {
-      console.log('Movie title: ', movie.title);
-      console.log('Search Value: ', searchVal);
-      if (movie.title === searchVal) {
-        flag = true;
-        currentMovie = [ movie ];
+  }
+
+  handleSubmitButton() {
+    var currentMovie = [];
+    for (let movie of this.originalList) {
+      var flag = true;
+      for (let char in this.state.value) {
+        if (movie.title[char] !== this.state.value[char]) {
+          flag = false;
+        }
+      }
+      if (flag) {
+        currentMovie.push(movie);
       }
     }
-    if (flag) {
-      console.log('Current movie: ', currentMovie);
-      this.setState({movies: currentMovie});
-    }
+    this.setState({movies: currentMovie});
   }
 
   render() {
-    {console.log('Movies: ', this.state.movies)}
-    {console.log('State: ', this.state.value)}
     return (
       <div id="app-wrapper">
         <div id="titleBar">
@@ -42,7 +44,8 @@ class App extends React.Component {
         <div id="searchBar">
           <Search 
           searchVal={this.state.value}
-          onSearchChange={this.handleSearch} />
+          onSearchChange={this.handleSearch} 
+          onSubmit={this.handleSubmitButton} />
         </div>
         <div id="movieList">
           <MovieList 
