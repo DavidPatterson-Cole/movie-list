@@ -74,8 +74,10 @@ table {
 
 #searchBar {
   display: grid;
+  grid-gap: 5px;
   grid-column: 2;
   grid-row: 3;
+  grid-template-columns: 100px 100px 1fr;
   align-items: center;
   justify-items: stretch;
 }
@@ -87,6 +89,7 @@ table {
   align-items: center;
   justify-items: stretch;
 }
+
 
 
 

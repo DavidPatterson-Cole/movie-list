@@ -56,3 +56,21 @@ label {
   display: grid;
   justify-items: stretch;
 }
+
+#watched {
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  align-items: center;
+  justify-items: stretch; 
+  border: 1px solid lightgrey; 
+}
+
+#toWatch {
+  display: grid;
+  grid-column: 2;
+  grid-row: 1;
+  align-items: center;
+  justify-items: stretch;  
+  border: 1px solid lightgrey;
+}

@@ -69,6 +69,12 @@ class App extends React.Component {
           onSubmit={this.handleMovieSubmit}/>
         </div>
         <div id="searchBar">
+          <div id="watched">
+            <h1>Watched</h1>
+          </div>
+          <div id="toWatch">
+            <h1>To Watch</h1>
+          </div>
           <Search 
           searchVal={this.state.searchVal}
           onChange={this.handleSearch} 

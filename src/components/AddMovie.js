@@ -22,7 +22,7 @@ class AddMovie extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          <input type="text" placeholder="Search..." value={this.props.movieVal} onChange={this.handleChange} />
+          <input type="text" placeholder="Add Movies..." value={this.props.movieVal} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Add" />
       </form>
