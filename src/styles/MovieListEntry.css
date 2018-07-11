@@ -49,8 +49,13 @@ table {
 
 #entryBlock {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   padding-left: 30px;
   border: 2px solid lightgrey;
   height: 50px;
+}
+
+#watchedButton {
+  width: 75px;
 }

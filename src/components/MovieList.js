@@ -6,7 +6,7 @@ import MovieListEntry from './MovieListEntry'
 class MovieList extends React.Component {
   render() {
     let items = this.props.movies.map((movie, index) => {
-          return <MovieListEntry movie={this.props.movies[index]}/>;
+          return <MovieListEntry onWatched={this.props.onWatched} movie={this.props.movies[index]}/>;
         });
     let noItems = (<div>
                     <h1>No movie match was found.</h1>

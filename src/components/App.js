@@ -15,8 +15,31 @@ class App extends React.Component {
     this.handleMovie = this.handleMovie.bind(this);
     this.handleMovieSubmit = this.handleMovieSubmit.bind(this);
 
+    this.handleWatched = this.handleWatched.bind(this);
+    this.switchView = this.switchView.bind(this);
+
     // is this movies and added movies state the right way to think about this
-    this.state = {searchVal: '', movies: [], movieVal: '', addedMovies: []};
+    this.state = {searchVal: '', movies: [], movieVal: '', addedMovies: [], watched: [], view: false};
+  }
+
+  switchView(event) {
+    // How do I change colour of button using css in react
+    console.log(event.target.classList)
+    this.state.view ? this.setState({view: false}) : this.setState({view: true});
+  }
+
+  handleWatched(movie) {
+    var currentWatched = this.state.watched;
+    currentWatched.push(movie);
+    this.setState({watched: currentWatched});
+    var currentUnwatched = this.state.movies;
+    for (var i=0; i < currentUnwatched.length; i++) {
+      if (currentUnwatched[i].title = movie.title) {
+        currentUnwatched.splice(i, 1);
+      }
+    }
+    this.setState({movies: currentUnwatched});
+    console.log('Watched movies: ', this.state.watched[0].title);
   }
 
   handleSearch(searchVal) {
@@ -51,7 +74,6 @@ class App extends React.Component {
     let addedMovieList = this.state.addedMovies;
     addedMovieList.push({title: this.state.movieVal});
 
-    console.log(currentMovieList);
     this.setState({movies: currentMovieList});
     this.setState({addedMovies: addedMovieList});
   }
@@ -69,12 +91,12 @@ class App extends React.Component {
           onSubmit={this.handleMovieSubmit}/>
         </div>
         <div id="searchBar">
-          <div id="watched">
-            <h1>Watched</h1>
-          </div>
-          <div id="toWatch">
-            <h1>To Watch</h1>
-          </div>
+          <button id="watched" type="submit" onClick={this.switchView}>
+            Watched
+          </button>
+          <button id="toWatch" type="submit" onClick={this.switchView}>
+            To Watch
+          </button>
           <Search 
           searchVal={this.state.searchVal}
           onChange={this.handleSearch} 
@@ -82,7 +104,8 @@ class App extends React.Component {
         </div>
         <div id="movieList">
           <MovieList 
-          movies={this.state.movies}
+          onWatched={this.handleWatched}
+          movies={this.state.view ? this.state.watched : this.state.movies}
           searchVal={this.state.searchVal} />
         </div>
       </div>
